@@ -1,0 +1,7 @@
+{
+  "name": "@wcd/Harsh0808.lwc-ktcgmoso",
+  "version": "0.0.0",
+  "scripts": {
+    "serve": "npx wcd-cli@latest serve ozR0JnQdjHxKiCNQm7bh --open"
+  }
+}

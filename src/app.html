@@ -1,0 +1,148 @@
+<template>
+	<div class="c-container slds-text-heading_medium slds-text-title_bold" style="background-color: rgb(243, 242, 242);">
+		<h1>Jira Integration Details</h1>
+	</div>
+	<div class="c-container">
+		<lightning-layout multiple-rows="true">
+			<lightning-layout-item padding="around-small" size="3">
+				<lightning-input type="text" name={input1} label="JIRA User Id" onchange={handleChange} value={inputvalue}>
+				</lightning-input>
+			</lightning-layout-item>
+			<lightning-layout-item padding="around-small" size="3">
+				<lightning-input type="text" name="input2" label="JIRA API Token" onchange={handleChange2} value={inputvalue2}>
+				</lightning-input>
+			</lightning-layout-item>
+			<lightning-layout-item padding="around-small" size="3">
+				<lightning-input type="text" name="input3" label="JIRA URL" onchange={handleChange3} value={inputvalue3}>
+				</lightning-input>
+			</lightning-layout-item>
+			<div class="slds-var-m-top_x-large">
+				<lightning-layout-item padding="around-small" size="3">
+					<lightning-button type="submit" variant="brand" label="Save Credentials" title="Save Credentials"
+						onclick={createAccount} class="slds-var-m-left_x-small" style="height:1.5rem;"></lightning-button>
+					<lightning-button variant="brand" label="Test Connection" title="Test Connection" onclick={handleClick}
+						class="slds-var-m-left_x-smallmall"></lightning-button>
+				</lightning-layout-item>
+			</div>
+		</lightning-layout>
+	</div>
+	<div class="c-container slds-text-heading_medium slds-text-title_bold" style="background-color: rgb(243, 242, 242);">
+		<h1>Opportunity Line Item Field and JIRA Issue Mapping</h1>
+	</div>
+	<div class="c-container">
+		<lightning-layout horizontal-align="spread">
+			<lightning-layout-item size="6" padding="around-small">
+				<lightning-combobox name="opportunityLineItemFields" label="Opportunity Line Item Fields" value={valueComboBox}
+					options={options} onchange={handleChangeComboBox}></lightning-combobox>
+			</lightning-layout-item>
+			<lightning-layout-item size="6" padding="around-small">
+				<div class="slds-var-m-top_large">
+					<p>Summary</p>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+		<lightning-layout horizontal-align="spread">
+			<lightning-layout-item size="6" padding="around-small">
+				<lightning-combobox name="lineDescription" value={valueComboBox2} options={options2}
+					onchange={handleChangeComboBox2}></lightning-combobox>
+			</lightning-layout-item>
+			<lightning-layout-item size="6" padding="around-small">
+				<div class="slds-m-top_large">
+					<p>Description</p>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+		<lightning-layout horizontal-align="spread">
+			<lightning-layout-item size="6" padding="around-small">
+				<lightning-combobox name="sortOrder" value={valueComboBox3} options={options3} onchange={handleChangeComboBox3}>
+				</lightning-combobox>
+			</lightning-layout-item>
+			<lightning-layout-item size="6" padding="around-small">
+				<div class="slds-m-top_large">
+					<p>Estimated Hours</p>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+		<lightning-layout horizontal-align="spread">
+			<lightning-layout-item size="6" padding="around-small">
+				<lightning-combobox name="modifiedDate" value={valueComboBox4} options={options4}
+					onchange={handleChangeComboBox4}></lightning-combobox>
+			</lightning-layout-item>
+			<lightning-layout-item size="6" padding="around-small">
+				<div class="slds-m-top_large">
+					<p>Due Date</p>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+		<div class="c-container slds-text-heading_medium slds-text-title_bold"
+			style="background-color: rgb(243, 242, 242);">
+			<h1>Case Settings</h1>
+		</div>
+		<div class="c-container">
+			<lightning-layout multiple-rows="true">
+				<lightning-layout-item size="6" padding="around-small">
+					<p>To link cases to JIRA a project needs to be selected. You can use the import button to import an
+						existing
+						JIRA project using the JIRA project key.</p>
+					<lightning-button variant="brand" label="Import JIRA Project" title="Save Credentials" onclick={handleClick}
+						class="slds-m-left_x-small"></lightning-button>
+					<p>Default JIRA Project for Case</p>
+					<div class="slds-m-around_medium">
+
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</div>
+		<div class="c-container slds-text-heading_medium slds-text-title_bold"
+			style="background-color: rgb(243, 242, 242);">
+			<h1> Other Configurations</h1>
+		</div>
+		<div class="c-container slds-m-*-around_*">
+			<lightning-layout horizontal-align="spread" multiple-rows="true">
+				<div class="slds-m-top_large">
+					<lightning-layout-item size="4" padding="around-small">
+						<lightning-button variant="brand" label="Sync all JIRA users" title="Sync all JIRA users"
+							onclick={handleClick} class="slds-m-left_x-small">
+						</lightning-button>
+					</lightning-layout-item>
+				</div>
+				<div class="slds-m-top_medium">
+					<lightning-layout-item size="2" padding="around-small">
+						<lightning-input type="toggle" label="Sync JIRA Comments Disabled" checked>
+						</lightning-input>
+
+					</lightning-layout-item>
+				</div>
+				<div class="slds-m-top_medium">
+					<lightning-layout-item size="2" padding="around-small">
+						<lightning-input type="toggle" label="Due Date Mandatory." checked>
+						</lightning-input>
+					</lightning-layout-item>
+				</div>
+				<div class="" style="top:-15px;">
+					<lightning-layout-item size="2" padding="around-small">
+						<lightning-combobox name="sortOrder" value={valueComboBox5} options={options5}
+							onchange={handleChangeComboBox5}>
+						</lightning-combobox>
+					</lightning-layout-item>
+				</div>
+				<div class="">
+					<lightning-layout-item size="2" padding="around-small">
+						<lightning-combobox name="sortOrder" value={valueComboBox6} options={options6}
+							onchange={handleChangeComboBox6}>
+						</lightning-combobox>
+					</lightning-layout-item>
+				</div>
+			</lightning-layout>
+		</div>
+		<lightning-card>
+			<div slot="footer">
+				<lightning-button label="Cancel" title="Cancel" onclick={handleClick} class="slds-m-left_x-small">
+				</lightning-button>
+				<lightning-button variant="brand" label="Save" title="Save" onclick={handleClick} class="slds-m-left_x-small">
+				</lightning-button>
+			</div>
+		</lightning-card>
+
+	</div>
+</template>
